@@ -8,9 +8,17 @@ import { DateRange } from "react-date-range";
 import SearchItem from "../../components/searchItem/SearchItem";
 import useFetch from "../../hooks/useFetch";
 import Topbar from "../../components/topbar/Topbar";
+import TaxiItem from "../../components/taxiItem/TaxiItem";
 
 const Taxi = () => {
 
+    const { data, loading, error, reFetch } = useFetch(
+      `http://localhost:8800/api/taxi`
+    );
+  
+    const handleClick = () => {
+      reFetch();
+    };
   return (
     <div>
       <Topbar/>
@@ -18,17 +26,17 @@ const Taxi = () => {
       <div className="listContainer">
         <div className="listWrapper">
         
-          {/* <div className="listResult">
+          <div className="listResult">
             {loading ? (
               "loading"
             ) : (
               <>
                 {data.map((item) => (
-                  <SearchItem item={item} key={item._id} />
+                  <TaxiItem item={item} key={item._id} />
                 ))}
               </>
             )}
-          </div> */}
+          </div>
         </div>
       </div>
     </div>
