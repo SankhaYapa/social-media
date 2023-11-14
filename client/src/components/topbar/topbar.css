@@ -87,7 +87,9 @@
   justify-content: center;
   font-size: 12px;
 }
-
+.iconstop{
+  color: white;
+}
 .topbarImg {
   width: 32px;
   height: 32px;

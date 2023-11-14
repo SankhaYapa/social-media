@@ -49,7 +49,7 @@ const Login = () => {
             <span className="SignInName">Sign In Now.</span>
             <span className="details">Enter your details below.</span>
             <input
-              placeholder="Email"
+              placeholder="Username"
               type="text"
               required
               className="loginInput"

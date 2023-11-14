@@ -9,6 +9,8 @@ import hotelsRoute from "./routes/hotels.js";
 import roomsRoute from "./routes/rooms.js";
 import postsRoutes from "./routes/post.js";
 import taxiRoutes from "./routes/taxi.js";
+import conversationRoutes from "./routes/conversations.js";
+import messagesRoutes from "./routes/messages.js";
 import cookieParser from "cookie-parser";
 import cors from "cors";
 import helmet from "helmet";
@@ -67,6 +69,8 @@ app.use("/api/hotels", hotelsRoute);
 app.use("/api/rooms", roomsRoute);
 app.use("/api/posts", postsRoutes);
 app.use("/api/taxi", taxiRoutes);
+app.use("/api/conversations", conversationRoutes);
+app.use("/api/messages", messagesRoutes);
 app.use((err, req, res, next) => {
   const errorStatus = err.status || 500;
   const errorMessage = err.message || "Something went wrong!";

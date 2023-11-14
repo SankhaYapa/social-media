@@ -43,7 +43,7 @@ const isHomePage = location.pathname === "/";
           </div>
           <div className="topbarIconItem">
           <Link to="/messenger" style={{textDecoration:"none"}}>
-            <ChatIcon />
+            <ChatIcon className="iconstop" />
             <span className="topbarIconBadge">2</span>
             </Link>
           </div>

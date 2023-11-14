@@ -11,7 +11,7 @@
 .siImg {
   width: 200px;
   height: 200px;
-  object-fit: cover;
+  object-fit: fill;
 }
 
 .siDesc {
@@ -116,6 +116,10 @@
   justify-content: end;
 }
 .contacticon{
-display: flex;gap: 10px;
+display: flex;
+gap: 10px;
 align-items: center;
+}
+a{
+  color: black;
 }

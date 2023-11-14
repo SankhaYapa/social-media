@@ -4,9 +4,18 @@ import ChatIcon from '@mui/icons-material/Chat';
 import PermIdentityIcon from '@mui/icons-material/PermIdentity';
 import LuggageIcon from '@mui/icons-material/Luggage';
 import MailIcon from '@mui/icons-material/Mail';
-
+import PhoneIcon from '@mui/icons-material/Phone'
 const TaxiItem = ({ item }) => {
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
+  const handlePhoneClick = () => {
+    // You can implement the logic to initiate a phone call here
+    console.log(`Calling ${item.phoneNo}`);
+  };
+
+  const handleEmailClick = () => {
+    // You can implement the logic to open an email client here
+    console.log(`Opening email to ${item.contactEmail}`);
+  };
   return (
     <div className="searchItem">
       <img src={PF+"taxi/"+item.photo} alt="" className="siImg" />
@@ -38,10 +47,19 @@ const TaxiItem = ({ item }) => {
           </Link>
         </div>
         <div className="contact">
-           <span className="contacticon"><MailIcon></MailIcon>{item.phoneNo}</span>
-           <span>|</span>
-           <span className="contacticon"><MailIcon></MailIcon>{item.contactEmail}</span>
-        </div>
+      <span className="contacticon" onClick={handlePhoneClick}>
+        <PhoneIcon />
+        
+        <a  style={{textDecoration:"none"}}href={`tel:${item.phoneNo}`}>{item.phoneNo}</a>
+
+
+      </span>
+      <span>|</span>
+      <span className="contacticon" onClick={handleEmailClick}>
+        <MailIcon />
+        <a style={{textDecoration:"none"}} href={`mailto:${item.contactEmail}`}>{item.contactEmail}</a>
+      </span>
+    </div>
       </div>
     </div>
   );
