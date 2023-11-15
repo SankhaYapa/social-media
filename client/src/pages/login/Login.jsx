@@ -46,10 +46,10 @@ const Login = () => {
       >
         <div className="loginLeft">
           <form className="loginBox" onSubmit={handleClick}>
-            <span className="SignInName">Sign In Now.</span>
-            <span className="details">Enter your details below.</span>
+            <span className="SignInName">Sign In Now</span>
+            <span className="details">Enter your details below</span>
             <input
-              placeholder="Email"
+              placeholder="UserName"
               type="text"
               required
               className="loginInput"
