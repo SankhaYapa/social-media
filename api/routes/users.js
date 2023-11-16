@@ -8,6 +8,7 @@ import {
   followUser,
   unFollowUser,
   getConversationUsers,
+  getFriends,
 } from "../controllers/user.js";
 import { verifyAdmin, verifyToken, verifyUser } from "../utils/verifyToken.js";
 import { getConversationByUserIds } from "../controllers/conversations.js";
@@ -39,7 +40,7 @@ router.get("/", getUser);
 router.get("/", getUsers);
 router.get("/getGuiders", getGuiders);
 router.get("/:userId", getConversationUsers);
-
+router.get("/friends/:userId",getFriends);
 router.put("/:id/follow",followUser)
 router.put("/:id/unfollow",unFollowUser)
 export default router;

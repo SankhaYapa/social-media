@@ -21,6 +21,7 @@ const Login = () => {
   const handleChange = (e) => {
     setCredentials((prev) => ({ ...prev, [e.target.id]: e.target.value }));
   };
+  const [errorr, setError] = useState(null);
 
   const handleClick = async (e) => {
     e.preventDefault();
@@ -29,11 +30,13 @@ const Login = () => {
       const res = await axios.post("http://localhost:8800/api/auth/login", credentials);
       dispatch({ type: "LOGIN_SUCCESS", payload: res.data.details });
       navigate("/");
-    } catch (err) {
+    }  catch (err) {
+      console.log(err.response.data); // Log the response from the server
+      setError("Invalid username or password. Please try again.");
       dispatch({ type: "LOGIN_FAILURE", payload: err.response.data });
     }
   };
-
+  
   return (
     <div className="login">
       <div
@@ -67,6 +70,8 @@ const Login = () => {
               id="password"
            
             />
+           {errorr && <span className="loginError">{errorr}</span>}
+
             <button className="loginButton" disabled={isFetching}>
               {isFetching ? (
                 <CircularProgress color="secondary" size="20px" />
