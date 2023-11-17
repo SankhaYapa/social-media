@@ -3,12 +3,29 @@
     align-items: center;
     margin-bottom: 15px;
     margin-top: 20px;
+    width: 200px;
+    height: 50px;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 10px; /* Add margin for spacing */
+    transition: box-shadow 0.3s ease; /* Add a smooth transition effect for hover */
+  
+    /* Additional styles for the content inside the card */
+    align-items: center;
+    padding: 10px;
   }
   
+  .sidebarFriend:hover {
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    cursor: pointer; /* Add a pointer cursor on hover */
+  }
   .sidebarFriendImg {
     width: 32px;
     height: 32px;
     border-radius: 50%;
     object-fit: cover;
     margin-right: 10px;
+  }
+  h6{
+    color: rgb(49, 48, 48);
   }

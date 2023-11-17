@@ -18,9 +18,10 @@ import { Link } from "react-router-dom";
 import Guiders from "../guiders/Guiders";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { LinearProgress } from "@mui/material";
 export default function Sidebar() {
   const [guiders, setGuiders] = useState([]);
-
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
     const fetchGuiders = async () => {
       try {
@@ -28,6 +29,7 @@ export default function Sidebar() {
         const response = await axios.get("http://localhost:8800/api/users/getGuiders");
         
         setGuiders(response.data);
+        setLoading(false); 
       } catch (error) {
         console.error("Error fetching guiders:", error.message);
       }
@@ -81,9 +83,9 @@ export default function Sidebar() {
         <hr className="sidebarHr" />
         <ul className="sidebarFriendList">
           <span>Contact Your Guider</span>
-        
+          {loading && <LinearProgress />} 
           {guiders.map((u) => (
-            <Guiders key={u.id} user={u} />
+            <Guiders key={u.id} guider={u} />
           ))}
         </ul>
       </div>

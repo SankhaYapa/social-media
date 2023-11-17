@@ -7,7 +7,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import { Add, Remove, Star } from "@mui/icons-material";
-
+import { LinearProgress } from "@mui/material";
 export default function Rightbar({ user }) {
  const PF = process.env.REACT_APP_PUBLIC_FOLDER;
   const [friends, setFriends] = useState([]);
@@ -15,6 +15,7 @@ export default function Rightbar({ user }) {
   const [followed, setFollowed] = useState(
     currentUser.followings.includes(user?.id)
   );
+  const [loading, setLoading] = useState(true);
 // useEffect(()=>{
 //   setFollowed(currentUser.followings.includes(user?.id));
 // },[currentUser,user.id]);
@@ -26,6 +27,7 @@ useEffect(() => {
     try {
       const response = await axios.get("http://localhost:8800/api/hotels");
       setHotels(response.data);
+      setLoading(false); 
     } catch (error) {
       console.error("Error fetching hotels:", error);
     }
@@ -40,6 +42,7 @@ console.log(hotels)
       try {
         const friendList = await axios.get("/users/friends/" + user._id);
         setFriends(friendList.data);
+        setLoading(false); 
       } catch (err) {
         console.log(err);
       }
@@ -104,11 +107,11 @@ console.log(hotels)
         <div className="birthdayContainer">
           <span className="birthdayText">Top experiences on Tripadvisor</span>
         </div>
-
+        {loading && <LinearProgress />} 
         <div className="rightbarExperience">
         {hotels.map((hotel) => (
           <div className="Experience" key={hotel._id}>
-            <Link to={`/hotels/${hotel._id}`} style={{ textDecoration: "none" }}>
+            <Link to={`/singlehotels/${hotel._id}`} style={{ textDecoration: "none" }}>
               <img className="ExperienceImg"src={hotel.photos[0]} alt="" />
               <span className="ExperienceText">{hotel.name}</span>
               {/* Include other hotel information */}
@@ -122,24 +125,17 @@ console.log(hotels)
           </div>
         ))}
 
-         
-      
-  
         </div>
 
-        <h4 className="rightbarTitle">Online Travel Guiders</h4>
-        <ul className="rightbarFriendList">
-          {Users.map((u) => (
-            <Online key={u.id} user={u} />
-          ))}
-        </ul>
+        
       </>
     );
   };
 
   const ProfileRightbar = () => {
     return (
-      <>
+      
+      <>{loading && <LinearProgress />} 
         {user.username !== currentUser.username && (
           <button className="rightbarFollowButton" onClick={handleClick}>
             {followed ? "Unfollow" : "Follow"}

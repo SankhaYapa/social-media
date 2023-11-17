@@ -14,6 +14,8 @@ import { AuthContext } from "./context/AuthContext";
 import Messenger from "./pages/messenger/Messenger";
 import Taxi from "./pages/taxi/Taxi";
 import Guiders from "./pages/guiders/Guiders";
+import SingleHotel from "./pages/single_hotel/SingleHotel";
+import Profile from "./pages/profile/Profile";
 
 function App() {
   const { user } = useContext(AuthContext);
@@ -25,6 +27,7 @@ function App() {
         <Route path="/taxi" element={<Taxi/>}/>
         <Route path="/guiders" element={<Guiders/>}/>
         <Route path="/hotels/:id" element={<Hotel/>}/>
+        <Route path="/singlehotels/:id" element={<SingleHotel/>}/>
        
         <Route path="/register" element={user ? <HomeSocial /> : <Register />} />
           <Route path="/messenger" element={!user ? <HomeSocial /> : <Messenger />} />
@@ -34,8 +37,8 @@ function App() {
             path="/"
             element={user ? <HomeSocial /> : <Register />} // Redirect to the login page if not logged in
           />
-          {/* <Route path="/profile/:username" element={<Profile />} />
-          <Route path="/hotelhome" element={<HotelHome/>}/> */}
+          <Route path="/profile/:username" element={<Profile />} />
+         
       </Routes>
     </BrowserRouter>
   );

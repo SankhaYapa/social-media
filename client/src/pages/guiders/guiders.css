@@ -1,0 +1,40 @@
+/* Add this to your existing guiders.css or create a new one */
+
+.guiderCard {
+    width: 200px;
+    height: 250px;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 10px; /* Add margin for spacing */
+    transition: box-shadow 0.3s ease; /* Add a smooth transition effect for hover */
+  
+    /* Additional styles for the content inside the card */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+  }
+  
+  .guiderCard:hover {
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    cursor: pointer; /* Add a pointer cursor on hover */
+  }
+.profileimg{
+    width: 150px;
+    border-radius: 50%;
+    height: 150px;
+    object-fit: cover;
+}
+h3{
+    margin-top: 10px;
+}
+.siCheckButton{
+    margin-top: 20px;
+    background-color: #008009;
+    color: white;
+    width: 150px;
+    padding: 10px 5px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+  }

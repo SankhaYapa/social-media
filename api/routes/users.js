@@ -5,8 +5,12 @@ import {
   getUser,
   getUsers,
   getGuiders,
+  followUser,
+  unFollowUser,
+  getConversationUsers,
 } from "../controllers/user.js";
 import { verifyAdmin, verifyToken, verifyUser } from "../utils/verifyToken.js";
+import { getConversationByUserIds } from "../controllers/conversations.js";
 
 const router = express.Router();
 
@@ -29,10 +33,13 @@ router.put("/:id", verifyUser, updateUser);
 router.delete("/:id", verifyUser, deleteUser);
 
 
-
+//GET
+router.get("/", getUser);
 //GET ALL
 router.get("/", getUsers);
 router.get("/getGuiders", getGuiders);
-//GET
-router.get("/:id", getUser);
+router.get("/:userId", getConversationUsers);
+
+router.put("/:id/follow",followUser)
+router.put("/:id/unfollow",unFollowUser)
 export default router;
