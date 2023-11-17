@@ -21,15 +21,14 @@ const TaxiItem = ({ item }) => {
       <img src={PF+"taxi/"+item.photo} alt="" className="siImg" />
       <div className="siDesc">
         <h1 className="siTitle">{item.makeAndModel}-({item.type})</h1>
-        <span className="siDistance"></span>
+        {/* <span className="siDistance"></span>
         <span className="siTaxiOp"></span>
-        <span className="siSubtitle">
-        
-        </span>
+        <span className="siSubtitle"></span> */}
         <div className="">
          <div> <span className="siCancelOp"><PermIdentityIcon className="icon"></PermIdentityIcon>{item.seats} seats</span></div>
-        <div><span className="siCancelOp"><LuggageIcon className="icon"></LuggageIcon>LargeBags{item.largeBags},SmallBages{item.smallBags}</span></div></div>
-       
+        <div><span className="siCancelOp"><LuggageIcon className="icon"></LuggageIcon>LargeBags{item.largeBags},SmallBages{item.smallBags}</span></div>
+        </div>
+       <br/>
         <span className="siCancelOpSubtitle">
           You can cancel later, so lock in this great price today!
         </span>

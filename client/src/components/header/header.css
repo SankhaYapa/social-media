@@ -1,6 +1,6 @@
 .header {
-  background-color: #003580;
-  color: white;
+  background-color:rgb(29, 129, 142);
+  color:white;
   display: flex;
   justify-content: center;
   position: relative;
@@ -26,7 +26,7 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  color: white;
+  color:white;
   text-decoration: none;
 }
 
@@ -41,8 +41,8 @@
 }
 
 .headerBtn {
-  background-color: #0071c2;
-  color: white;
+  background-color:green;
+  color:white;
   font-weight: 500;
   border: none;
   padding: 10px;

@@ -17,7 +17,8 @@ const isHomePage = location.pathname === "/";
     <div className="topbarContainer">
       <div className="topbarLeft">
         <Link to="/" style={{textDecoration:"none"}}>
-        <span className="logo">KandySocial</span>
+          <img src={PF + "/logo3.png"} alt="" className="LogoImge" />
+        {/* <span className="logo">Kandy Guider</span></div> */}
         </Link>
       </div>
       <div className="topbarCenter">

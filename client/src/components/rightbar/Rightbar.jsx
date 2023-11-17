@@ -75,7 +75,7 @@ console.log(hotels)
           <span className="birthdayText">Find Things to Do by interest</span>
         </div>
         <span className="tag">
-          Collections of Sri Lanka best bookable experiences
+          Collections of Kandy's best bookable experiences
         </span>
 
         <div className="rightbarInterests">
@@ -105,7 +105,7 @@ console.log(hotels)
           */}
         </div>
         <div className="birthdayContainer">
-          <span className="birthdayText">Top experiences on Tripadvisor</span>
+          <span className="birthdayText">Top experiences on Kandy Booking</span>
         </div>
         {loading && <LinearProgress />} 
         <div className="rightbarExperience">

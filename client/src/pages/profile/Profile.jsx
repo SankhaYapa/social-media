@@ -36,7 +36,7 @@ import { useParams } from "react-router";
             <div className="profileCover">
               <img
                 className="profileCoverImg"
-                src={user.coverPicture ? PF+user.coverPicture : PF + "person/cover.PNG"}
+                src={user.coverPicture ? PF+"person/"+user.coverPicture : PF + "person/cover.png"}
                 alt=""
               />
               <img

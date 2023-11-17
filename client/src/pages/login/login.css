@@ -1,8 +1,8 @@
 .login {
   width: 100vw;
   height: 100vh;
-  background: rgb(9, 9, 121);
-  background: linear-gradient(347deg, rgba(9, 9, 121, 1) 19%, rgba(0, 212, 255, 1) 100%);
+  /* background: rgb(9, 9, 121); */
+  background: rgb(29, 129, 142);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -52,8 +52,8 @@
 }
 
 .LogoImg {
-  width: 100px;
-  height: 100px;
+  width: 120px;
+  height: 120px;
 }
 
 .loginDesc {
@@ -130,7 +130,9 @@
   cursor: pointer;
   background: rgb(145, 15, 214);
   background: linear-gradient(350deg, rgb(43, 149, 4) 19%, rgb(192, 249, 38) 100%);
-  margin-bottom: 25px;
+  margin-bottom: 20px;
+  margin-top: 10px;
+  
 }
 
 .loginRegisterButton:hover {
@@ -147,6 +149,7 @@
 
 .notamem {
   margin-right: 10px;
+  
 }
 
 .SignInName {
@@ -154,8 +157,10 @@
   font-weight: 600;
   margin-bottom: 2px;
   color: rgb(9, 109, 251);
+ 
 }
 
 .details {
   margin-bottom: 20px;
+  font-size: 12px;
 }

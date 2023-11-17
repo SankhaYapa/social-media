@@ -49,8 +49,8 @@ export default function Register() {
       >
         <div className="loginRight">
           <form className="loginBox" onSubmit={handleClick}>
-            <span className="SignInName">Sign Up Now.</span>
-            <span className="details">Enter your details below.</span>
+            <span className="SignInName">Sign Up Now</span>
+            <span className="details">Enter your details below</span>
             <input
               placeholder="Username"
               ref={username}
@@ -88,7 +88,7 @@ export default function Register() {
               )}
             </button>
             <div className="loginRegister">
-              <span className="notamem">Not a member?</span>
+              <span className="notamem">Already a user?</span>
               <Link to="/login">
                 <button className="loginRegisterButton" onClick={routeChange}>
                   Log into Account
