@@ -44,7 +44,7 @@ export const getTaxi = async (req, res, next) => {
 
 export const getTaxis = async (req, res, next) => {
   try {
-    const taxis = await Taxi.find().limit(req.query.limit || 10);
+    const taxis = await Taxi.find()
     res.status(200).json(taxis);
   } catch (err) {
     next(err);

@@ -1,0 +1,21 @@
+.becomeGuider{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+.guiderCheck{
+    padding: 5px;
+}
+.fileInputLabel{
+    cursor: pointer;
+    border: solid 1px;
+   margin-bottom: 20px;
+   background-color: rgb(217, 217, 217);
+  
+   padding: 5px 10px;border-radius: 5px;
+}
+h6{
+    color: gray;
+}

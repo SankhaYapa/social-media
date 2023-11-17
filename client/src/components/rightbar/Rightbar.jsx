@@ -154,8 +154,8 @@ console.log(hotels)
                 <img
                   src={
                     friend.profilePicture
-                      ? PF +"person/"+ friend.profilePicture
-                      : PF + "person/avatar.png"
+                      ? PF +friend.profilePicture
+                      : PF + "avatar.png"
                   }
                   alt=""
                   className="rightbarFollowingImg"

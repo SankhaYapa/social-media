@@ -57,7 +57,7 @@ export default function Topbar() {
             <span className="topbarIconBadge">1</span>
           </div>
           <Link to={`/profile/${user.username}`}>
-            <img src={user.profilePicture ? PF+"person/"+user.profilePicture : PF+"person/avatar.jpg"} alt="" className="topbarImg"/>
+            <img src={user.profilePicture ? PF+user.profilePicture : PF+"avatar.jpg"} alt="" className="topbarImg"/>
           </Link>
           {/* Logout button */}
           <Link className="topbarIconItem-logout" onClick={handleLogout}>
