@@ -12,6 +12,9 @@ import { AuthContext } from "./context/AuthContext";
 import { hotelColumns, roomColumns, userColumns } from "./datatablesource";
 import NewHotel from "./pages/newHotel/NewHotel";
 import NewRoom from "./pages/newRoom/NewRoom";
+import Hotels from "./pages/hotels/Hotels";
+import Rooms from "./pages/rooms/Rooms";
+import Taxi from "./pages/taxi/Taxi";
 
 function App() {
   const { darkMode } = useContext(DarkModeContext);
@@ -44,7 +47,7 @@ function App() {
                 index
                 element={
                   <ProtectedRoute>
-                    <List columns={userColumns} />
+                    <List/>
                   </ProtectedRoute>
                 }
               />
@@ -70,7 +73,7 @@ function App() {
                 index
                 element={
                   <ProtectedRoute>
-                    <List columns={hotelColumns} />
+                    <Hotels/>
                   </ProtectedRoute>
                 }
               />
@@ -96,7 +99,7 @@ function App() {
                 index
                 element={
                   <ProtectedRoute>
-                    <List columns={roomColumns} />
+                  <Rooms></Rooms>
                   </ProtectedRoute>
                 }
               />
@@ -117,7 +120,35 @@ function App() {
                 }
               />
             </Route>
+            <Route path="taxi">
+              <Route
+                index
+                element={
+                  <ProtectedRoute>
+                  <Taxi></Taxi>
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path=":productId"
+                element={
+                  <ProtectedRoute>
+                    <Single />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="new"
+                element={
+                  <ProtectedRoute>
+                    <NewRoom  />
+                  </ProtectedRoute>
+                }
+              />
+            </Route>
+          
           </Route>
+          
         </Routes>
       </BrowserRouter>
     </div>

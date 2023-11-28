@@ -3,14 +3,14 @@ import { DataGrid } from "@mui/x-data-grid";
 import { Link, useLocation } from "react-router-dom";
 import axios from "axios";
 import "./datatable.scss"
-const Datatable = () => {
+const DatatableTaxi = () => {
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const response = await axios.get("http://localhost:8800/api/users/");
+        const response = await axios.get("http://localhost:8800/api/taxi/");
         setUsers(response.data);
         setLoading(false);
       } catch (error) {
@@ -27,18 +27,19 @@ console.log(users)
 
   // Define columns for the DataGrid
   const columns = [
-    { field: "username", headerName: "Username", width: 150 },
-    { field: "email", headerName: "Email", width: 200 },
-    { field: "country", headerName: "Country", width: 150 },
-    { field: "city", headerName: "City", width: 150 },
-    { field: "phone", headerName: "Phone", width: 150 },
-    { field: "isGuider", headerName: "isGuider", width: 150 },
-    // Add more columns as needed
+    { field: "makeAndModel", headerName: "MakeAndModel", width: 150 },
+    { field: "type", headerName: "Type", width: 200 },
+    { field: "seats", headerName: "Seats", width: 150 },
+    { field: "largeBags", headerName: "LargeBags", width: 150 },
+    { field: "smallBags", headerName: "SmallBags", width: 150 },
+    { field: "price", headerName: "Price", width: 150 },
+    { field: "cancellationPolicy", headerName: "CancellationPolicy", width: 150 },
+  
   ];
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:8800/api/users/${id}`);
+      await axios.delete(`http://localhost:8800/api/taxi/${id}`);
       // Update the local state after deleting the user
       setUsers((prevUsers) => prevUsers.filter((user) => user._id !== id));
     } catch (error) {
@@ -50,9 +51,9 @@ console.log(users)
     <div className="datatable">
       <div className="datatableTitle">
         {path}
-        {/* <Link to={`http://localhost:3000/users/new`} className="link">
+        <Link to={`http://localhost:3000/taxi/new`} className="link">
           Add New
-        </Link> */}
+        </Link>
       </div>
       <DataGrid
         loading={loading}
@@ -71,4 +72,4 @@ console.log(users)
   );
 };
 
-export default Datatable;
+export default DatatableTaxi;
