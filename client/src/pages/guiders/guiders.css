@@ -1,8 +1,8 @@
 /* Add this to your existing guiders.css or create a new one */
 
 .guiderCard {
-    width: 200px;
-    height: 250px;
+    width: 180px;
+    height: 240px;
     border: 1px solid #ccc;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     margin: 10px; /* Add margin for spacing */
@@ -37,4 +37,10 @@ h3{
     border: none;
     cursor: pointer;
     border-radius: 5px;
+  }
+  .listWrapper{
+    
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
   }

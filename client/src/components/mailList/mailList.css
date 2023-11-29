@@ -1,7 +1,8 @@
 .mail{
   width: 100%;
   margin-top: 50px;
-  background-color:rgb(29, 129, 142);
+background: rgb(9, 9, 121);
+  background: linear-gradient(347deg, rgba(9, 9, 121, 1) 19%, rgba(0, 212, 255, 1) 100%);
   color: white;
   display: flex;
   flex-direction: column;

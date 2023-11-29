@@ -37,10 +37,10 @@ const Guiders = () => {
           {guiders.map((guider) => (
             <div key={guider._id} className="guiderCard">
               {/* Customize this as per your guider display */}
-              <img src={PF+"person/"+guider.profilePicture} alt={guider.username} className="profileimg"/>
+              <img src={PF+guider.profilePicture} alt={guider.username} className="profileimg"/>
               <h3>{guider.username}</h3>
               <Link to={``}>
-              <button className="siCheckButton">Contact Now</button>
+              <button className="siCheckButton" >Contact Now</button>
          
           </Link>
               {/* Add more details or actions as needed */}

@@ -12,10 +12,98 @@
     cursor: pointer;
     border: solid 1px;
    margin-bottom: 20px;
-   background-color: rgb(217, 217, 217);
-  
-   padding: 5px 10px;border-radius: 5px;
+    height: 20px;
+        border-radius: 10px;
+        border: hidden;
+        font-size: 14px;
+        border: solid 1px rgba(98, 98, 255, 0.301);
+        padding-left: 20px;
+        background-color: rgb(255, 255, 255);
+        margin-bottom: 20px;
+        padding: 15px;
 }
 h6{
     color: gray;
+}
+.SignupName {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 2px;
+    color: rgb(9, 109, 251);
+}
+.logupBox {
+    height: 400px;
+    width: 350px;
+    padding: 10px;
+    background-color: rgb(247, 248, 255);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+    margin-top: 50px;
+    margin-bottom: 150px
+}
+.loginInput {
+    height: 20px;
+    border-radius: 10px;
+    border: hidden;
+    font-size: 14px;
+    border: solid 1px rgba(98, 98, 255, 0.301);
+    padding-left: 20px;
+    background-color: rgb(255, 255, 255);
+    margin-bottom: 20px;
+    padding: 15px;
+}
+.logupButton {
+    height: 40px;
+    border-radius: 10px;
+    border: none;
+    background-color: #1775ee;
+    color: white;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    background: rgb(20, 16, 253);
+    background: linear-gradient(350deg, rgb(13, 17, 243) 19%, rgba(0, 212, 255, 1) 100%);
+    margin-bottom: 25px;
+    padding: 10px;
+    align-items: center;
+}
+.useremail{
+    display: flex;
+    gap: 10px;
+}
+.loginInputs{
+    width: 40%;
+        height: 20px;
+            border-radius: 10px;
+            border: hidden;
+            font-size: 14px;
+            border: solid 1px rgba(98, 98, 255, 0.301);
+            padding-left: 20px;
+            background-color: rgb(255, 255, 255);
+            margin-bottom: 20px;
+            padding: 15px;
+}
+.Registerbottom{
+    display: flex;
+    justify-content: center;
+    height: 50px;
+    gap: 10px;
+}
+.notamemn{
+    margin-top: 10px;
+}
+.RegisterButton{
+            width: 100px;
+                padding: 10px;
+            border-radius: 10px;
+            border: none;
+            color: white;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            background: rgb(145, 15, 214);
+            background: linear-gradient(350deg, rgb(43, 149, 4) 19%, rgb(192, 249, 38) 100%);
+        
 }

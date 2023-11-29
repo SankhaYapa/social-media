@@ -9,7 +9,7 @@ const TaxiSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  photo:{
+  photo: {
     type: String,
     required: true,
   },
@@ -34,16 +34,15 @@ const TaxiSchema = new mongoose.Schema({
     type: String,
     default: "Free cancellation",
   },
- 
+
   contactEmail: {
     type: String,
     required: true,
   },
-  phoneNo:{
+  phoneNo: {
     type: String,
     required: true,
-  }
-  
+  },
 });
 
 const Taxi = mongoose.model("Taxi", TaxiSchema);
