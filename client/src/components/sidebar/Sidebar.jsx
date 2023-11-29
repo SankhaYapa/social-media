@@ -55,12 +55,12 @@ export default function Sidebar() {
             <span className="sidebarListItemText">Chats</span>
           </li>
           </Link>
-          <Link to="/messenger" style={{textDecoration:"none"}}>
+          {/* <Link to="/messenger" style={{textDecoration:"none"}}>
           <li className="sidebarListItem">
           <PlayCircleIcon className="icon"></PlayCircleIcon> 
             <span className="sidebarListItemText">Videos</span>
           </li>
-          </Link>
+          </Link> */}
           <Link to="/hotel" style={{textDecoration:"none"}}>
           <li className="sidebarListItem">
           <HotelIcon className="icon"></HotelIcon> 

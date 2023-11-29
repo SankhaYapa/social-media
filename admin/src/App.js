@@ -15,6 +15,7 @@ import NewRoom from "./pages/newRoom/NewRoom";
 import Hotels from "./pages/hotels/Hotels";
 import Rooms from "./pages/rooms/Rooms";
 import Taxi from "./pages/taxi/Taxi";
+import NewTaxi from "./pages/newTaxi/NewTaxi";
 
 function App() {
   const { darkMode } = useContext(DarkModeContext);
@@ -141,7 +142,7 @@ function App() {
                 path="new"
                 element={
                   <ProtectedRoute>
-                    <NewRoom  />
+                    <NewTaxi  />
                   </ProtectedRoute>
                 }
               />

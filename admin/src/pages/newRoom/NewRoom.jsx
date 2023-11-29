@@ -20,15 +20,21 @@ const NewRoom = () => {
 
   const handleClick = async (e) => {
     e.preventDefault();
-    const roomNumbers = rooms.split(",").map((room) => ({ number: room }));
+    if (!hotelId || !info || !rooms) {
+      console.log('Please fill in all the required fields.');
+      return;
+    }
+  
+    const roomNumbers = rooms.split(',').map((room) => ({ number: room.trim() }));
+  
     try {
-      await axios.post(`/rooms/${hotelId}`, { ...info, roomNumbers });
+      await axios.post(`http://localhost:8800/api/rooms/${hotelId}`, { ...info, roomNumbers });
     } catch (err) {
-      console.log(err);
+      console.log('Error creating room:', err);
     }
   };
 
-  console.log(info)
+  console.log(hotelId)
   return (
     <div className="new">
       <Sidebar />

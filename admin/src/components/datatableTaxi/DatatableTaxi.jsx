@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import { DataGrid } from "@mui/x-data-grid";
 import { Link, useLocation } from "react-router-dom";
 import axios from "axios";
-import "./datatable.scss"
+import "./datatable.scss";
+
 const DatatableTaxi = () => {
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -21,7 +22,7 @@ const DatatableTaxi = () => {
 
     fetchUsers();
   }, []);
-console.log(users)
+
   const getRowId = (user) => user._id;
   const path = useLocation().pathname;
 
@@ -33,8 +34,18 @@ console.log(users)
     { field: "largeBags", headerName: "LargeBags", width: 150 },
     { field: "smallBags", headerName: "SmallBags", width: 150 },
     { field: "price", headerName: "Price", width: 150 },
-    { field: "cancellationPolicy", headerName: "CancellationPolicy", width: 150 },
-  
+    {
+      field: "actions",
+      headerName: "Actions",
+      sortable: false,
+      width: 120,
+      renderCell: (params) => (
+        <div>
+         
+          <button onClick={() => handleDelete(params.row._id)} className="deleteButton">Delete</button>
+        </div>
+      ),
+    },
   ];
 
   const handleDelete = async (id) => {
@@ -51,7 +62,7 @@ console.log(users)
     <div className="datatable">
       <div className="datatableTitle">
         {path}
-        <Link to={`http://localhost:3000/taxi/new`} className="link">
+        <Link to={`/taxi/new`} className="link">
           Add New
         </Link>
       </div>
@@ -63,10 +74,6 @@ console.log(users)
         checkboxSelection
         disableSelectionOnClick
         getRowId={getRowId} // Specify the getRowId function
-        onDelete={(selection) => {
-          const selectedUserId = selection.data[0].id;
-          handleDelete(selectedUserId);
-        }}
       />
     </div>
   );

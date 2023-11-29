@@ -18,7 +18,7 @@ const TaxiItem = ({ item }) => {
   };
   return (
     <div className="searchItem">
-      <img src={PF+"taxi/"+item.photo} alt="" className="siImg" />
+      <img src={PF+item.photo} alt="" className="siImg" />
       <div className="siDesc">
         <h1 className="siTitle">{item.makeAndModel}-({item.type})</h1>
         <span className="siDistance"></span>

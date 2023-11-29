@@ -31,13 +31,13 @@ const router = express.Router();
 router.put("/:id", verifyUser, updateUser);
 
 //DELETE
-router.delete("/:id", verifyUser, deleteUser);
+router.delete("/:id", deleteUser);
 
-router.get("/", getUsers);
+
 //GET
 router.get("/", getUser);
 //GET ALL
-
+router.get("/all", getUsers);
 router.get("/getGuiders", getGuiders);
 router.get("/:userId", getConversationUsers);
 router.get("/friends/:userId",getFriends);
