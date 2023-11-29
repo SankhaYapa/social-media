@@ -49,7 +49,7 @@ const submitHandler = async (e)=>{
     <div className="share">
       <div className="shareWrapper">
         <div className="shareTop">
-          <img className="shareProfileImg" src={user.profilePicture ? PF+"person/"+user.profilePicture : PF+"person/avatar.jpg"} alt="" />
+          <img className="shareProfileImg" src={user.profilePicture ? PF+user.profilePicture : PF+"avatar.jpg"} alt="" />
           <input
             placeholder={"What's in your mind " + user.username + "?"}
             className="shareInput"

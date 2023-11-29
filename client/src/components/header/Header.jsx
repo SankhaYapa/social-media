@@ -50,9 +50,12 @@ const Header = ({ type }) => {
   const { dispatch } = useContext(SearchContext);
 
   const handleSearch = () => {
-    dispatch({ type: "NEW_SEARCH", payload: { destination, dates, options } });
-    navigate("/hotels", { state: { destination, dates, options } });
+    const lowercasedDestination = destination.toLowerCase(); // Convert to lowercase
+  
+    dispatch({ type: "NEW_SEARCH", payload: { destination: lowercasedDestination, dates, options } });
+    navigate("/hotels", { state: { destination: lowercasedDestination, dates, options } });
   };
+  
   const location = useLocation();
   return (
     <div className="header">

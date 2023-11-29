@@ -35,8 +35,8 @@ export default function Guiders({ guider, setCurrentChat, conversations }) {
         className="sidebarFriendImg"
         src={
           guider.profilePicture
-            ? PF + "person/" + guider.profilePicture
-            : PF + "person/avatar.jpg"
+            ? PF +  guider.profilePicture
+            : PF + "avatar.jpg"
         }
         alt=""
       />

@@ -1,0 +1,4 @@
+.listContainer {
+    height: 100%; /* Adjust the height as needed */
+    overflow-y: auto;
+  }
