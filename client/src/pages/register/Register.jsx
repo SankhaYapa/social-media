@@ -18,6 +18,7 @@ export default function Register() {
   const { isFetching } = useContext(AuthContext);
   const [isGuider, setIsGuider] = useState(false);
   const [profilePic, setProfilePic] = useState(null); 
+
   const handleClick = async (e) => {
     e.preventDefault();
     if (passwordAgain.current.value !== password.current.value) {
@@ -53,7 +54,7 @@ export default function Register() {
   return (
     <div className="login">
       <div
-        className="loginWrapper"
+        className="registerWrapper"
         style={{
           backgroundImage: `url(${PF + "background2.jpg"})`,
           backgroundSize: "cover",
@@ -61,22 +62,24 @@ export default function Register() {
         }}
       >
         <div className="loginRight">
-          <form className="loginBox" onSubmit={handleClick}>
-            <span className="SignInName">Sign Up Now.</span>
-            <span className="details">Enter your details below.</span>
-            <input
+          <form className="logupBox" onSubmit={handleClick}>
+            <span className="SignupName">Sign Up Now</span>
+            <span className="details">Enter your details below</span>
+           <div className="useremail"> 
+             <input
               placeholder="Username"
               ref={username}
-              className="loginInput"
+              className="loginInputs"
               required
             />
             <input
               placeholder="Email"
               ref={email}
               required
-              className="loginInput"
+              className="loginInputs"
               type="email"
             />
+           </div>
             <input
               placeholder="Password"
               ref={password}
@@ -108,18 +111,18 @@ export default function Register() {
 <label htmlFor="fileInput" className="fileInputLabel">
   Upload Profile Picture{profilePic &&<label> ::{profilePic.name}</label>}
 </label>
-            <button className="loginButton" type="submit" disabled={isFetching}>
+            <button className="logupButton" type="submit" disabled={isFetching}>
               {isFetching ? (
                 <CircularProgress color="secondary" size="20px" />
               ) : (
-                "Sign Up"
+                "Create Account"
               )}
             </button>
-            <div className="loginRegister">
-              <span className="notamem">Not a member?</span>
+            <div className="Registerbottom">
+              <span className="notamemn">Already a user?</span>
               <Link to="/login">
-                <button className="loginRegisterButton" onClick={routeChange}>
-                  Log into Account
+                <button className="RegisterButton" onClick={routeChange}>
+                  Sign in
                 </button>
               </Link>
             </div>

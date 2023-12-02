@@ -6,11 +6,11 @@ const SearchItem = ({ item }) => {
     <div className="searchItem">
       <img src={item.photos[0]} alt="" className="siImg" />
       <div className="siDesc">
-        <h1 className="siTitle">{item.name}</h1>
-        <span className="siDistance">{item.distance}m from center</span>
-        <span className="siTaxiOp">Free airport taxi</span>
+        <h1 className="siTitle">{item.name}({item.type})</h1>
+        <span className="siDistance">{item.distance}km from City</span>
+        {/* <span className="siTaxiOp"></span> */}
         <span className="siSubtitle">
-          Studio Apartment with Air conditioning
+         
         </span>
         <span className="siFeatures">{item.desc}</span>
         <span className="siCancelOp">Free cancellation </span>

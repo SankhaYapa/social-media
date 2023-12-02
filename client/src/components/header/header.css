@@ -1,6 +1,7 @@
 .header {
-  background-color: #003580;
-  color: white;
+  background: rgb(20, 16, 253);
+    background: linear-gradient(350deg, rgb(13, 17, 243) 19%, rgba(0, 212, 255, 1) 100%);
+  color:white;
   display: flex;
   justify-content: center;
   position: relative;
@@ -26,7 +27,7 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  color: white;
+  color:white;
   text-decoration: none;
 }
 
@@ -41,8 +42,8 @@
 }
 
 .headerBtn {
-  background-color: #0071c2;
-  color: white;
+  background-color:green;
+  color:white;
   font-weight: 500;
   border: none;
   padding: 10px;
@@ -52,7 +53,7 @@
 .headerSearch {
   height: 30px;
   background-color: white;
-  border: 3px solid #febb02;
+  border: 3px solid rgb(116, 245, 250);
   display: flex;
   align-items: center;
   justify-content: space-around;

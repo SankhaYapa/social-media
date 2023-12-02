@@ -82,7 +82,7 @@ export default function Sidebar() {
       
         <hr className="sidebarHr" />
         <ul className="sidebarFriendList">
-          <span>Contact Your Guider</span>
+          <span>Connect with your Guider</span>
           {loading && <LinearProgress />} 
           {guiders.map((u) => (
             <Guiders key={u.id} guider={u} />

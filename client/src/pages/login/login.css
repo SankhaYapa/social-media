@@ -52,8 +52,8 @@
 }
 
 .LogoImg {
-  width: 100px;
-  height: 100px;
+  width: 120px;
+  height: 120px;
 }
 
 .loginDesc {
@@ -69,7 +69,9 @@
   display: flex;
   flex-direction: column;
  margin-left: 20px;
+ margin-top: 100px;
  margin-bottom: 150px
+ 
 }
 
 .loginInput {
@@ -121,7 +123,21 @@
 }
 
 .loginRegisterButton {
-  width: 60%;
+  height: 40px;
+    border-radius: 10px;
+    border: none;
+    /* background-color: #1775ee; */
+    color: white;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    /* background: rgb(20, 16, 253);
+    background: linear-gradient(350deg, rgb(13, 17, 243) 19%, rgba(0, 212, 255, 1) 100%); */
+    margin-bottom: 25px;
+    padding: 10px;
+    align-items: center;
+/*   
+    width: 60%;
   align-self: flex-end;
   height: 40px;
   border-radius: 10px;
@@ -129,10 +145,12 @@
   color: white;
   font-size: 14px;
   font-weight: 500;
-  cursor: pointer;
+  cursor: pointer; */
   background: rgb(145, 15, 214);
   background: linear-gradient(350deg, rgb(43, 149, 4) 19%, rgb(192, 249, 38) 100%);
-  margin-bottom: 25px;
+  /* margin-bottom: 20px;
+  margin-top: 5px;
+   */
 }
 
 .loginRegisterButton:hover {
@@ -149,6 +167,7 @@
 
 .notamem {
   margin-right: 10px;
+  
 }
 
 .SignInName {
@@ -156,14 +175,13 @@
   font-weight: 600;
   margin-bottom: 2px;
   color: rgb(9, 109, 251);
+ 
 }
 
 .details {
   margin-bottom: 20px;
+  font-size: 15px;
 }
 .loginError{
-  color:red;
-  text-align: center;
-margin-bottom: 10px;
-  
+  color: red;
 }

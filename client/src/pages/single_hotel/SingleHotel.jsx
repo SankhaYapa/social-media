@@ -98,11 +98,11 @@ const SingleHotel = () => {
               <span>{data.address}</span>
             </div>
             <span className="hotelDistance">
-              Excellent location – {data.distance}m from center
+              Excellent location – {data.distance}km from City
             </span>
             <span className="hotelPriceHighlight">
-              Book a stay over ${data.cheapestPrice} at this property and get a
-              free airport taxi
+              {/* Book a stay over ${data.cheapestPrice} at this property and get a
+              free airport taxi */}
             </span>
             <div className="hotelImages">
               {data.photos?.map((photo, i) => (

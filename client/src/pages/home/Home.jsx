@@ -3,7 +3,6 @@ import FeaturedProperties from "../../components/featuredProperties/FeaturedProp
 import Footer from "../../components/footer/Footer";
 import Header from "../../components/header/Header";
 import MailList from "../../components/mailList/MailList";
-import Navbar from "../../components/navbar/Navbar";
 import PropertyList from "../../components/propertyList/PropertyList";
 import Topbar from "../../components/topbar/Topbar";
 import "./home.css";

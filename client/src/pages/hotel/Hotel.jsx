@@ -66,7 +66,7 @@ const Hotel = () => {
   };
   return (
     <div>
-      <Topbar />
+      <Topbar/>
       <Header type="list" />
       {loading ? (
         "loading"
@@ -106,11 +106,10 @@ const Hotel = () => {
               <span>{data.address}</span>
             </div>
             <span className="hotelDistance">
-              Excellent location – {data.distance}m from center
+              Excellent location – {data.distance}km from City
             </span>
             <span className="hotelPriceHighlight">
-              Book a stay over ${data.cheapestPrice} at this property and get a
-              free airport taxi
+             {/* {data.cheapestPrice}  */}
             </span>
             <div className="hotelImages">
               {data.photos?.map((photo, i) => (
