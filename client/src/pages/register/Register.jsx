@@ -54,7 +54,7 @@ export default function Register() {
   return (
     <div className="login">
       <div
-        className="loginWrapper"
+        className="registerWrapper"
         style={{
           backgroundImage: `url(${PF + "background2.jpg"})`,
           backgroundSize: "cover",

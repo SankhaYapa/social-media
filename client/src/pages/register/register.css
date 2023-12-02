@@ -107,3 +107,9 @@ h6{
             background: linear-gradient(350deg, rgb(43, 149, 4) 19%, rgb(192, 249, 38) 100%);
         
 }
+.registerWrapper{
+        width: 70%;
+            height: 100%;
+            display: flex;
+            box-shadow: 0px 0px 15px 5px rgba(0, 0, 0, 0.47);
+}

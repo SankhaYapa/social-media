@@ -7,15 +7,24 @@ import MailIcon from '@mui/icons-material/Mail';
 import PhoneIcon from '@mui/icons-material/Phone'
 const TaxiItem = ({ item }) => {
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
-  const handlePhoneClick = () => {
-    // You can implement the logic to initiate a phone call here
-    console.log(`Calling ${item.phoneNo}`);
-  };
-
+ 
   const handleEmailClick = () => {
     // You can implement the logic to open an email client here
     console.log(`Opening email to ${item.contactEmail}`);
   };
+  const handlePhoneClick = () => {
+  console.log(`Calling ${item.phoneNo}`);
+
+  // Check if the browser supports the tel protocol
+  if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+    // For mobile devices, open the default phone app
+    window.location.href = `tel:${item.phoneNo}`;
+  } else {
+    // For other devices, log a message or implement your custom logic
+    console.log("Unable to initiate phone call on this device.");
+  }
+};
+
   return (
     <div className="searchItem">
       <img src={PF+item.photo} alt="" className="siImg" />
@@ -40,10 +49,11 @@ const TaxiItem = ({ item }) => {
         <div className="siDetailTexts">
           <span className="siPrice">${item.price}</span>
           <span className="siTaxOp">Price for 3 days</span>
-          <Link to={`/hotels/${item._id}`}>
-          <button className="siCheckButton">Contact Now</button>
+        
+            <button className="siCheckButton" onClick={handlePhoneClick}>
+            Contact Now
+          </button>
          
-          </Link>
         </div>
         <div className="contact">
       <span className="contacticon" onClick={handlePhoneClick}>
