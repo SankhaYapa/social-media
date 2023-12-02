@@ -2,7 +2,7 @@ import Taxi from '../models/Taxi.js';
 
 export const createTaxi = async (req, res, next) => {
   const newTaxi = new Taxi(req.body);
-
+console.log(newTaxi)
   try {
     const savedTaxi = await newTaxi.save();
     res.status(201).json(savedTaxi);

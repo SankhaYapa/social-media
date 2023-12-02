@@ -1,148 +1,73 @@
-// import "./datatable.scss";
-// import { DataGrid } from "@mui/x-data-grid";
-// import { userColumns, userRows } from "../../datatablesource";
-// import { Link, useLocation } from "react-router-dom";
-// import { useEffect, useState } from "react";
-// import useFetch from "../../hooks/useFetch";
-// import axios from "axios";
-
-// const Datatable = ({columns}) => {
-//   const location = useLocation();
-//   const path = location.pathname.split("/")[1];
-//   const [list, setList] = useState();
-//   const { data, loading, error } = useFetch(`/${path}`);
-
-//   useEffect(() => {
-//     setList(data);
-//   }, [data]);
-
-//   const handleDelete = async (id) => {
-//     try {
-//       await axios.delete(`/${path}/${id}`);
-//       setList(list.filter((item) => item._id !== id));
-//     } catch (err) {}
-//   };
-
-//   const actionColumn = [
-//     {
-//       field: "action",
-//       headerName: "Action",
-//       width: 200,
-//       renderCell: (params) => {
-//         return (
-//           <div className="cellAction">
-//             <Link to="/users/test" style={{ textDecoration: "none" }}>
-//               <div className="viewButton">View</div>
-//             </Link>
-//             <div
-//               className="deleteButton"
-//               onClick={() => handleDelete(params.row._id)}
-//             >
-//               Delete
-//             </div>
-//           </div>
-//         );
-//       },
-//     },
-//   ];
-//   return (
-//     <div className="datatable">
-//       <div className="datatableTitle">
-//         {path}
-//         <Link to={`/${path}/new`} className="link">
-//           Add New
-//         </Link>
-//       </div>
-//       <DataGrid
-//         className="datagrid"
-//         rows={list}
-//         columns={columns.concat(actionColumn)}
-//         pageSize={9}
-//         rowsPerPageOptions={[9]}
-//         checkboxSelection
-//         getRowId={(row) => row._id}
-//       />
-//     </div>
-//   );
-// };
-
-// export default Datatable;
-import "./datatable.scss";
+import React, { useEffect, useState } from "react";
 import { DataGrid } from "@mui/x-data-grid";
 import { Link, useLocation } from "react-router-dom";
-import { useEffect, useState } from "react";
-import useFetch from "../../hooks/useFetch";
 import axios from "axios";
+import "./datatable.scss";
 
-const Datatable = ({ columns }) => {
-  const location = useLocation();
-  const path = location.pathname.split("/")[1];
-  const [list, setList] = useState([]);
-  const { data, loading, error } = useFetch(`http://localhost:8800/api/${path}`);
+const Datatable = () => {
+  const [users, setUsers] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (data) {
-      setList(data);
-    }
-  }, [data]);
+    const fetchUsers = async () => {
+      try {
+        const response = await axios.get("http://localhost:8800/api/users/all");
+        setUsers(response.data);
+        setLoading(false);
+      } catch (error) {
+        console.error("Error fetching users:", error);
+        setLoading(false);
+      }
+    };
+
+    fetchUsers();
+  }, []);
+
+  const getRowId = (user) => user._id;
+  const path = useLocation().pathname;
+
+  // Define columns for the DataGrid
+  const columns = [
+    { field: "username", headerName: "Username", width: 150 },
+    { field: "email", headerName: "Email", width: 200 },
+    { field: "isGuider", headerName: "isGuider", width: 150 },
+    {
+      field: "actions",
+      headerName: "Actions",
+      width: 150,
+      renderCell: (params) => (
+        <button onClick={() => handleDelete(params.row._id)} className="deleteButton">Delete</button>
+      ),
+    },
+    // Add more columns as needed
+  ];
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:8800/api/${path}/${id}`);
-      setList(list.filter((item) => item._id !== id));
-    } catch (err) {
-      console.error("Error deleting item: ", err);
+      await axios.delete(`http://localhost:8800/api/users/${id}`);
+      // Update the local state after deleting the user
+      setUsers((prevUsers) => prevUsers.filter((user) => user._id !== id));
+    } catch (error) {
+      console.error("Error deleting user:", error);
     }
   };
-//   const handleDelete = async (id) => {
-//   try {
-//     const response = await axios.delete(`/${path}/${id}`, { timeout: 10000 }); // Increase the timeout to 10 seconds
-//     setList(prevList => prevList.filter((item) => item._id !== id));
-//   } catch (err) {
-//     console.error("Error deleting item: ", err);
-//   }
-// };
-
-
-
-
-
-  const actionColumn = [
-    {
-      field: "action",
-      headerName: "Action",
-      width: 200,
-      renderCell: (params) => {
-        return (
-          <div className="cellAction">
-            <Link to={`/users/${params.row._id}`} style={{ textDecoration: "none" }}>
-              <div className="viewButton">View</div>
-            </Link>
-            <div className="deleteButton" onClick={() => handleDelete(params.row._id)}>
-              Delete
-            </div>
-          </div>
-        );
-      },
-    },
-  ];
-
+console.log(users)
   return (
     <div className="datatable">
       <div className="datatableTitle">
         {path}
-        <Link to={`/${path}/new`} className="link">
+        {/* <Link to={`http://localhost:3000/users/new`} className="link">
           Add New
-        </Link>
+        </Link> */}
       </div>
       <DataGrid
-        className="datagrid"
-        rows={list}
-        columns={columns.concat(actionColumn)}
-        pageSize={9}
-        rowsPerPageOptions={[9]}
+        loading={loading}
+        rows={users}
+        columns={columns}
+        pageSize={10}
         checkboxSelection
-        getRowId={(row) => row._id}
+        disableSelectionOnClick
+        getRowId={getRowId} // Specify the getRowId function
       />
     </div>
   );

@@ -112,7 +112,7 @@ console.log(hotels)
         {hotels.map((hotel) => (
           <div className="Experience" key={hotel._id}>
             <Link to={`/singlehotels/${hotel._id}`} style={{ textDecoration: "none" }}>
-              <img className="ExperienceImg"src={hotel.photos[0]} alt="" />
+              <img className="ExperienceImg"src={PF+hotel.photos[0]} alt="" />
               <span className="ExperienceText">{hotel.name}</span>
               {/* Include other hotel information */}
               <div className="Rating">
