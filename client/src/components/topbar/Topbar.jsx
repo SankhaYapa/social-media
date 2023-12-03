@@ -45,17 +45,17 @@ export default function Topbar() {
         <div className="topbarIcons">
           <div className="topbarIconItem">
             <PersonIcon />
-            <span className="topbarIconBadge">1</span>
+            {/* <span className="topbarIconBadge">1</span> */}
           </div>
           <div className="topbarIconItem">
             <Link to="/messenger" style={{textDecoration:"none"}}>
               <ChatIcon className="iconstop" />
-              <span className="topbarIconBadge">2</span>
+              {/* <span className="topbarIconBadge">2</span> */}
             </Link>
           </div>
           <div className="topbarIconItem">
             <NotificationsIcon />
-            <span className="topbarIconBadge">1</span>
+            {/* <span className="topbarIconBadge">1</span> */}
           </div>
           <Link to={`/profile/${user.username}`}>
             <img src={user.profilePicture ? PF+user.profilePicture : PF+"avatar.jpg"} alt="" className="topbarImg"/>

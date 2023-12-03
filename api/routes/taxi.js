@@ -5,6 +5,8 @@ import {
   deleteTaxi,
   getTaxi,
   getTaxis,
+  createTaxiBooking,
+  getTaxiBooked,
 } from '../controllers/taxi.js';
 
 const router = express.Router();
@@ -23,5 +25,6 @@ router.get('/:id', getTaxi);
 
 // Get a list of taxis
 router.get('/', getTaxis);
-
+router.post("/booking", createTaxiBooking);
+router.get("/booking/all", getTaxiBooked);
 export default router;

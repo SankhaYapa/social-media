@@ -1,20 +1,18 @@
+import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCircleXmark } from "@fortawesome/free-solid-svg-icons";
+import { faCircleXmark, faCalendarDays } from "@fortawesome/free-solid-svg-icons";
 import useFetch from "../../hooks/useFetch";
-import { useContext, useState } from "react";
-import { SearchContext } from "../../context/SearchContext";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { DateRange } from "react-date-range";
 import "react-date-range/dist/styles.css";
 import "react-date-range/dist/theme/default.css";
 import { format } from "date-fns";
-import { faCalendarDays } from "@fortawesome/free-solid-svg-icons";
-
+import "./reservemanual.css";
 const ReserveManual = ({ setOpen, hotelId }) => {
-  const [selectedRooms, setSelectedRooms] = useState([]);
+  const [selectedRoom, setSelectedRoom] = useState(null);
   const [openDate, setOpenDate] = useState(false);
-
+  const [roomData, setRoomData] = useState([]);
   const [dates, setDates] = useState([
     {
       startDate: new Date(),
@@ -22,15 +20,29 @@ const ReserveManual = ({ setOpen, hotelId }) => {
       key: "selection",
     },
   ]);
-  const { data, loading, error } = useFetch(
-    `http://localhost:8800/api/hotels/room/${hotelId}`
-  );
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const fetchRoomData = async () => {
+      try {
+        const response = await axios.get(
+          `http://localhost:8800/api/hotels/room/${hotelId}`
+        );
+        setRoomData(response.data);
+      } catch (error) {
+        console.error("Error fetching room data:", error.message);
+      }
+    };
+
+    fetchRoomData();
+  }, [hotelId]);
 
   // Form state
   const [formData, setFormData] = useState({
     guestName: "",
     guestEmail: "",
     specialRequests: "",
+   
   });
 
   const handleInputChange = (e) => {
@@ -38,11 +50,17 @@ const ReserveManual = ({ setOpen, hotelId }) => {
     setFormData((prevData) => ({ ...prevData, [name]: value }));
   };
 
+  const handleRoomSelection = (event) => {
+    const selectedRoomId = event.target.value;
+    const selectedRoom = roomData.find((room) => room._id === selectedRoomId);
+    setSelectedRoom(selectedRoom);
+  };
+
   const handleDateChange = (ranges) => {
     setDates([ranges.selection]);
-
   };
-    const handleCloseDateRange = () => {
+
+  const handleCloseDateRange = () => {
     setOpenDate(false);
   };
 
@@ -51,13 +69,16 @@ const ReserveManual = ({ setOpen, hotelId }) => {
 
     // Handle form submission (send data to server, etc.)
     const reservationData = {
-      rooms: selectedRooms, // Add logic to update selectedRooms based on user selection
-      dates,
+      roomId: selectedRoom._id,
+      rooms: selectedRoom ? [selectedRoom] : [], // Include selected room in an array
+      startDate: dates[0].startDate,
+    endDate: dates[0].endDate,
       guestName: formData.guestName,
       guestEmail: formData.guestEmail,
       specialRequests: formData.specialRequests,
+      
     };
-
+console.log(selectedRoom)
     // Example: Send reservationData to the server
     try {
       const response = await axios.post(
@@ -76,7 +97,6 @@ const ReserveManual = ({ setOpen, hotelId }) => {
     }
   };
 
-
   return (
     <div className="reserve">
       <div className="rContainer">
@@ -85,24 +105,61 @@ const ReserveManual = ({ setOpen, hotelId }) => {
           className="rClose"
           onClick={() => setOpen(false)}
         />
-        <span>Select your rooms:</span>
-        {data.map((item) => (
-          <div className="rItem" key={item._id}>
-            <div className="rItemInfo">
-              <div className="rTitle">{item.title}</div>
-              <div className="rDesc">{item.desc}</div>
-              <div className="rMax">
-                Max people: <b>{item.maxPeople}</b>
-              </div>
-              <div className="rPrice">{item.price}</div>
-            </div>
-            <div className="rSelectRooms">{/* Add logic to allow users to select rooms */}</div>
-          </div>
-        ))}
+    
         <form className="reserveForm" onSubmit={handleSubmit}>
-          {/* ... Existing form fields ... */}
           <div className="rItem">
-            <label htmlFor="dateRange"  onClick={()=> setOpenDate(false)}>Select Dates:</label>
+            <label htmlFor="roomSelection">Select Room:</label>
+            <select
+              id="roomSelection"
+              name="roomSelection"
+              onChange={handleRoomSelection}
+              value={selectedRoom ? selectedRoom._id : ""}
+            >
+              <option value="" disabled>
+                Select a room
+              </option>
+              {roomData.map((item) => (
+                <option key={item._id} value={item._id}>
+                  {item.title} - {item.price}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div className="rItem">
+            <label htmlFor="guestName">Guest Name:</label>
+            <input
+              type="text"
+              id="guestName"
+              name="guestName"
+              value={formData.guestName}
+              onChange={handleInputChange}
+            />
+          </div>
+          <div className="rItem">
+            <label htmlFor="guestEmail">Guest Email:</label>
+            <input
+              type="email"
+              id="guestEmail"
+              name="guestEmail"
+              value={formData.guestEmail}
+              onChange={handleInputChange}
+            />
+          </div>
+          <div className="rItem">
+            <label htmlFor="specialRequests">Special Requests:</label>
+            <textarea
+              id="specialRequests"
+              name="specialRequests"
+              value={formData.specialRequests}
+              onChange={handleInputChange}
+             
+            />
+          </div>
+  
+          <div className="rItem">
+            <label htmlFor="dateRange" onClick={() => setOpenDate(false)}>
+              Select Dates:
+            </label>
             <div className="headerSearchItem">
               <FontAwesomeIcon icon={faCalendarDays} className="headerIcon" />
               <span

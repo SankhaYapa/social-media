@@ -1,5 +1,6 @@
 import Hotel from "../models/Hotel.js";
 import Room from "../models/Room.js";
+import Reservation from "../models/Reservation.js";
 
 export const createHotel = async (req, res, next) => {
   const newHotel = new Hotel(req.body);
@@ -87,13 +88,68 @@ export const countByType = async (req, res, next) => {
 export const getHotelRooms = async (req, res, next) => {
   try {
     const hotel = await Hotel.findById(req.params.id);
+
+    if (!hotel) {
+      return res.status(404).json({ message: "Hotel not found" });
+    }
+
     const list = await Promise.all(
-      hotel.rooms.map((room) => {
-        return Room.findById(room);
+      hotel.rooms.map(async (roomId) => {
+        try {
+          const foundRoom = await Room.findById(roomId);
+
+          if (foundRoom) {
+            return foundRoom;
+          }
+        } catch (error) {
+          console.error(`Error finding room with ID ${roomId}:`, error.message);
+          // Handle the error based on your requirements
+        }
       })
     );
-    res.status(200).json(list)
+
+    res.status(200).json(list.filter((room) => room !== undefined && room !== null));
+  } catch (err) {
+    console.error("Error fetching hotel rooms:", err.message);
+    next(err);
+  }
+};
+export const reserveRoom = async (req, res, next) => {
+  try {
+    const { roomId, guestName, guestEmail, specialRequests, startDate, endDate } = req.body;
+
+    const room = await Room.findById(roomId);
+  
+    if (!room) {
+      return res.status(404).json({ success: false, message: "Room not found" });
+    }
+
+    const reservation = new Reservation({
+      roomId,
+      guestName,
+      guestEmail,
+      specialRequests,
+      startDate,
+      endDate,
+    });
+console.log(reservation)
+    await reservation.save();
+
+    res.status(201).json({ success: true, message: "Reservation created successfully" });
   } catch (err) {
     next(err);
+  }
+};
+export const getAllReservedRooms = async (req, res) => {
+  try {
+    // Fetch all reservations
+    const reservations = await Reservation.find();
+console.log(reservations)
+    
+
+    res.status(200).json(reservations);
+  } catch (error) {
+    console.error("Error fetching reserved rooms:", error.message);
+    res.status(500).json({ success: false, message: "Internal Server Error" });
   }
 };

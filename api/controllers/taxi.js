@@ -1,4 +1,5 @@
 import Taxi from '../models/Taxi.js';
+import TaxiBooking from '../models/TaxiBooking.js';
 
 export const createTaxi = async (req, res, next) => {
   const newTaxi = new Taxi(req.body);
@@ -50,3 +51,46 @@ export const getTaxis = async (req, res, next) => {
     next(err);
   }
 };
+export const createTaxiBooking =async (req,res)=>{
+  
+    try {
+      const {
+        startLocation,
+        endLocation,
+      
+        travelerName,
+        travelerEmail,
+        specialRequests,
+      } = req.body;
+  
+      // Create a new taxi booking document
+      const taxiBooking = new TaxiBooking({
+        startLocation,
+        endLocation,
+       
+        travelerName,
+        travelerEmail,
+        specialRequests,
+      });
+  
+      // Save the document to the database
+      const savedTaxiBooking = await taxiBooking.save();
+  
+      res.json(savedTaxiBooking);
+    } catch (error) {
+      console.error("Error creating taxi booking:", error.message);
+      res.status(500).json({ error: "Internal Server Error" });
+    }
+ 
+}
+
+export const getTaxiBooked=async(req,res)=>{
+  try {
+    const taxiBookings = await TaxiBooking.find();
+    console.log(taxiBookings)
+    res.json(taxiBookings);
+  } catch (error) {
+    console.error("Error fetching taxi bookings:", error.message);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+}

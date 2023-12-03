@@ -51,8 +51,8 @@ const TaxiItem = ({ item }) => {
           <span className="siTaxOp">Price for 3 days</span>
         
             <button className="siCheckButton" onClick={handlePhoneClick}>
-            Contact Now
-          </button>
+              Contact Now
+            </button>
          
         </div>
         <div className="contact">

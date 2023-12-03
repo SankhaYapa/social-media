@@ -58,7 +58,19 @@ const Sidebar = () => {
             <span>Taxi</span>
           </li>
           </Link>
-
+          <p className="title">Bookings</p>
+          <Link to="/reserve" style={{ textDecoration: "none" }}>
+            <li>
+            <NotificationsNoneIcon className="icon" />
+              <span>Room Reserved</span>
+            </li>
+          </Link>
+          <Link to="/book" style={{ textDecoration: "none" }}>
+            <li>
+            <NotificationsNoneIcon className="icon" />
+              <span>Taxi Booking</span>
+            </li>
+          </Link>
           {/* <p className="title">USEFUL</p>
           <li>
             <InsertChartIcon className="icon" />

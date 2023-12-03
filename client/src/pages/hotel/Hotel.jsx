@@ -17,6 +17,7 @@ import { SearchContext } from "../../context/SearchContext";
 import { AuthContext } from "../../context/AuthContext";
 import Reserve from "../../components/reserve/Reserve";
 import Topbar from "../../components/topbar/Topbar";
+import ReserveManual from "../../components/reservemanual/ReserveManual";
 
 const Hotel = () => {
   const location = useLocation();
@@ -146,7 +147,7 @@ const Hotel = () => {
           <Footer />
         </div>
       )}
-      {openModal && <Reserve setOpen={setOpenModal} hotelId={id}/>}
+      {openModal && <ReserveManual setOpen={setOpenModal} />}
     </div>
   );
 };

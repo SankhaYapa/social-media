@@ -16,6 +16,8 @@ import Hotels from "./pages/hotels/Hotels";
 import Rooms from "./pages/rooms/Rooms";
 import Taxi from "./pages/taxi/Taxi";
 import NewTaxi from "./pages/newTaxi/NewTaxi";
+import ReservedRooms from "./pages/reservedrooms/ReservedRooms";
+import Bookedtaxi from "./pages/bookedTaxi/Bookedtaxi";
 
 function App() {
   const { darkMode } = useContext(DarkModeContext);
@@ -147,7 +149,28 @@ function App() {
                 }
               />
             </Route>
-          
+            <Route path="reserve">
+              <Route
+                index
+                element={
+                  <ProtectedRoute>
+                  <ReservedRooms></ReservedRooms>
+                  </ProtectedRoute>
+                }
+              />
+            
+            </Route>
+            <Route path="book">
+              <Route
+                index
+                element={
+                  <ProtectedRoute>
+                  <Bookedtaxi></Bookedtaxi>
+                  </ProtectedRoute>
+                }
+              />
+            
+            </Route>
           </Route>
           
         </Routes>

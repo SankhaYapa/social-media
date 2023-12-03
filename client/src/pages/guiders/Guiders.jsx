@@ -39,7 +39,7 @@ const Guiders = () => {
               {/* Customize this as per your guider display */}
               <img src={PF+guider.profilePicture} alt={guider.username} className="profileimg"/>
               <h3>{guider.username}</h3>
-              <Link to={``}>
+              <Link to={`/messenger`}>
               <button className="siCheckButton" >Contact Now</button>
          
           </Link>
