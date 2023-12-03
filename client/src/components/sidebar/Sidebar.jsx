@@ -84,9 +84,11 @@ export default function Sidebar() {
         <ul className="sidebarFriendList">
           <span>Connect with your Guider</span>
           {loading && <LinearProgress />} 
+          <Link to={'/messenger'} style={{textDecoration:"none"}}>
           {guiders.map((u) => (
             <Guiders key={u.id} guider={u} />
           ))}
+          </Link>
         </ul>
       </div>
     </div>
